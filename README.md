@@ -1,8 +1,8 @@
-# Date Extra Package
+# Time Format Package
 
 ### Introduction
 
-An Elm language package for formatting dates and times.
+An Elm language package for formatting dates and times with support for internationalization.
 
 See bottom of this document for important history notes.
 

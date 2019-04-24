@@ -1,0 +1,82 @@
+module Time.Format.Config.Configs exposing
+    ( getConfig
+    , configs
+    )
+
+{-| Get a Time Format Config based up on a locale code.
+
+@docs getConfig
+@docs configs
+
+Copyright (c) 2016-2018 Robin Luiten
+
+-}
+
+import Dict exposing (Dict)
+import String exposing (replace)
+import Time.Format.Config as Config exposing (Config)
+import Time.Format.Config.Config_de_de as Config_de_de
+import Time.Format.Config.Config_en_au as Config_en_au
+import Time.Format.Config.Config_en_gb as Config_en_gb
+import Time.Format.Config.Config_en_us as Config_en_us
+import Time.Format.Config.Config_es_es as Config_es_es
+import Time.Format.Config.Config_et_ee as Config_et_ee
+import Time.Format.Config.Config_fi_fi as Config_fi_fi
+import Time.Format.Config.Config_fr_fr as Config_fr_fr
+import Time.Format.Config.Config_ja_jp as Config_ja_jp
+import Time.Format.Config.Config_lt_lt as Config_lt_lt
+import Time.Format.Config.Config_nb_no as Config_nb_no
+import Time.Format.Config.Config_nl_nl as Config_nl_nl
+import Time.Format.Config.Config_pl_pl as Config_pl_pl
+import Time.Format.Config.Config_pt_br as Config_pt_br
+import Time.Format.Config.Config_ro_ro as Config_ro_ro
+import Time.Format.Config.Config_ru_ru as Config_ru_ru
+import Time.Format.Config.Config_sv_se as Config_sv_se
+import Time.Format.Config.Config_tr_tr as Config_tr_tr
+
+
+{-| Built in configurations.
+-}
+configs : Dict String Config
+configs =
+    Dict.fromList
+        [ ( "en_au", Config_en_au.config )
+        , ( "en_us", Config_en_us.config )
+        , ( "en_gb", Config_en_gb.config )
+        , ( "fr_fr", Config_fr_fr.config )
+        , ( "fi_fi", Config_fi_fi.config )
+        , ( "pl_pl", Config_pl_pl.config )
+        , ( "ro_ro", Config_ro_ro.config )
+        , ( "nl_nl", Config_nl_nl.config )
+        , ( "pt_br", Config_pt_br.config )
+        , ( "et_ee", Config_et_ee.config )
+        , ( "ja_jp", Config_ja_jp.config )
+        , ( "ru_ru", Config_ru_ru.config )
+        , ( "de_de", Config_de_de.config )
+        , ( "tr_tr", Config_tr_tr.config )
+        , ( "lt_lt", Config_lt_lt.config )
+        , ( "sv_se", Config_sv_se.config )
+        , ( "es_es", Config_es_es.config )
+        , ( "nb_no", Config_nb_no.config )
+        ]
+
+
+{-| Get a Time Format Config for a locale id.
+
+Lower case matches strings and accepts "-" or "\_" to seperate
+the characters in code.
+
+Returns "en\_us" config if it can't find a match in configs.
+
+-}
+getConfig : String -> Config
+getConfig id =
+    let
+        lowerId =
+            String.toLower id
+
+        fixedId =
+            replace "-" "_" lowerId
+    in
+    Maybe.withDefault Config_en_us.config
+        (Dict.get fixedId configs)
