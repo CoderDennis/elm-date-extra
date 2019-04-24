@@ -1,4 +1,4 @@
-module Main exposing (..)
+module Main exposing (main)
 
 {-| An example of adjusting the Config for Format.
 
@@ -14,11 +14,12 @@ Copyright (c) 2016-2018 Robin Luiten
 
 -}
 
-import Date
-import Html exposing (Html, button, div, text)
+import Browser
+import Html exposing (Html, div, text)
 import String
-import Date.Extra.Config.Config_en_au exposing (config)
-import Date.Extra.Format as Format exposing (format)
+import Time exposing (utc)
+import Time.Format exposing (format)
+import Time.Format.Config.Config_en_au exposing (config)
 
 
 {-| Modify the i18n in config to change month names so they area reversed.
@@ -33,9 +34,9 @@ configReverseMonthName =
                 | monthName = String.reverse << i18nCurrent.monthName
             }
     in
-        { config
-            | i18n = i18nUpdated
-        }
+    { config
+        | i18n = i18nUpdated
+    }
 
 
 {-| See [DocFormat.md](../DocFormat.md) for token meanings.
@@ -55,30 +56,30 @@ formatReverseMonthName =
 {-| Time 1407833631161.0 in utc is "2014-08-12 08:53:51.161"
 -}
 testDate1 =
-    Date.fromTime 1407833631161.0
+    Time.millisToPosix 1407833631161
 
 
 main =
-    Html.beginnerProgram
-        { model = ()
+    Browser.sandbox
+        { init = ()
         , view = view
-        , update = (\_ model -> model)
+        , update = \_ model -> model
         }
 
 
-view model =
+view _ =
     div []
         [ div []
             [ text
-                ("Display String 1 en_au config \""
-                    ++ (formatOriginal testDate1)
+                ("formatOriginal en_au config with utc time zone \""
+                    ++ formatOriginal utc testDate1
                     ++ "\". "
                 )
             ]
         , div []
             [ text
-                ("Test is date1 Before date2 should be True and is = "
-                    ++ (formatReverseMonthName testDate1)
+                ("formatReverseMonthName en_au config with utc time zone \""
+                    ++ formatReverseMonthName utc testDate1
                     ++ "\". "
                 )
             ]
