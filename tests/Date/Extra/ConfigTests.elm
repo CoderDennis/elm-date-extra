@@ -1,24 +1,4 @@
-module Date.Extra.ConfigTests exposing
-    ( config_de_de
-    , config_en_au
-    , config_en_gb
-    , config_en_us
-    , config_es_es
-    , config_et_ee
-    , config_fi_fi
-    , config_fr_fr
-    , config_ja_jp
-    , config_lt_lt
-    , config_nb_no
-    , config_nl_nl
-    , config_pl_pl
-    , config_pt_br
-    , config_ro_ro
-    , config_ru_ru
-    , config_sv_se
-    , config_tr_tr
-    , tests
-    )
+module Date.Extra.ConfigTests exposing (tests)
 
 import Date.Extra.Config.Config_de_de as Config_de_de
 import Date.Extra.Config.Config_en_au as Config_en_au
@@ -208,11 +188,6 @@ tests =
                 Expect.equal
                     config_lt_lt.format
                     (Configs.getConfig "lt_lt").format
-        , test "getConfig el_gr" <|
-            \() ->
-                Expect.equal
-                    config_el_gr.format
-                    (Configs.getConfig "el_gr").format
         , test "getConfig es_es" <|
             \() ->
                 Expect.equal

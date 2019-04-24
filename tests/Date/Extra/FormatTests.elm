@@ -1,4 +1,4 @@
-module Date.Extra.FormatTests exposing (aTestTime, aTestTime10, aTestTime2, aTestTime3, aTestTime4, aTestTime5, aTestTime6, aTestTime7, aTestTime8, aTestTime9, config_de_de, config_en_au, config_en_gb, config_en_us, config_es_es, config_et_ee, config_fi_fi, config_fr_fr, config_ja_jp, config_lt_lt, config_nb_no, config_nl_nl, config_pl_pl, config_pt_br, config_ro_ro, config_ru_ru, config_sv_se, config_tr_tr, dayDayIdiomMonth, formatConfigTestCases, formatOffsetTestCases, formatTestCases, formatUtcTestCases, runConfigLanguageTest, runFormatTest, runFormatUtcTest, runformatOffsetTest, tests)
+module Date.Extra.FormatTests exposing (tests)
 
 {- Test date format. -}
 
@@ -23,7 +23,7 @@ import Date.Extra.Config.Config_tr_tr as Config_tr_tr
 import Date.Extra.Format as Format
 import Expect
 import Test exposing (..)
-import Time exposing (Time)
+import Time exposing (Posix, customZone, millisToPosix)
 
 
 config_en_au =
@@ -103,10 +103,6 @@ tests =
     describe "Date.Format tests"
         [ describe "format tests" <|
             List.map runFormatTest formatTestCases
-        , describe "formatUtc tests" <|
-            List.map runFormatUtcTest formatUtcTestCases
-        , describe "formatOffset tests" <|
-            List.map runformatOffsetTest formatOffsetTestCases
         , describe "configLanguage tests" <|
             List.map runConfigLanguageTest formatConfigTestCases
         ]
@@ -140,18 +136,8 @@ aTestTime =
     floor 1407833631116.0
 
 
-aTestTime2 =
-    floor 1407855231116.0
-
-
 aTestTime3 =
     floor -48007855231116.0
-
-
-{-| year 448
--}
-aTestTime4 =
-    floor -68007855231116.0
 
 
 {-| problem year negative year out disabled test
@@ -196,7 +182,7 @@ forces to +10:00 time zone so will run on any time zone
 runFormatTest ( name, expected, formatStr, time ) =
     let
         asDate =
-            Core.fromTime time
+            millisToPosix time
 
         -- _ = Debug.log "runFormatTest"
         --   ( "name", name
@@ -209,7 +195,7 @@ runFormatTest ( name, expected, formatStr, time ) =
         \() ->
             Expect.equal
                 expected
-                (Format.formatOffset Config_en_us.config -600 formatStr asDate)
+                (Format.format Config_en_us.config formatStr (customZone -600 []) asDate)
 
 
 formatTestCases =
@@ -253,13 +239,13 @@ formatTestCases =
 runConfigLanguageTest ( name, expected, config, formatStr, time ) =
     let
         asDate =
-            Core.fromTime time
+            millisToPosix time
     in
     test name <|
         \() ->
             Expect.equal
                 expected
-                (Format.formatOffset config -600 formatStr asDate)
+                (Format.format config formatStr (customZone -600 []) asDate)
 
 
 {-| These tests are testing a few language field values and the day idiom function.
@@ -318,9 +304,6 @@ formatConfigTestCases =
     , ( "Config_de_de longDate idiom", "Dienstag, 5. August 2014", config_de_de, config_de_de.format.longDate, aTestTime5 )
     , ( "Config_tr_tr date idiom", "05.08.2014", config_tr_tr, config_tr_tr.format.date, aTestTime5 )
     , ( "Config_tr_tr longDate idiom", "05 Ağustos 2014 Salı", config_tr_tr, config_tr_tr.format.longDate, aTestTime5 )
-    , ( "Config_el_gr date idiom", "5/8/14", config_el_gr, config_el_gr.format.date, aTestTime5 )
-    , ( "Config_el_gr longDate idiom", "Τρίτη, 5 Αυγούστου 2014", config_el_gr, config_el_gr.format.longDate, aTestTime5 )
-    , ( "Config_el_gr time idiom", "5:53 π.μ.", config_el_gr, config_el_gr.format.time, aTestTime5 )
     , ( "Config_fr_fr hours in 24", "05:53", config_fr_fr, config_fr_fr.format.time, aTestTime5 )
     , ( "Config_en_au iso week padded", "32", config_en_au, "%V", aTestTime5 )
     , ( "Config_en_au iso week", "1", config_en_au, "%-V", aTestTime10 )
@@ -329,57 +312,4 @@ formatConfigTestCases =
     , ( "Config_es_es day idiom", "05.08.2014", config_es_es, config_es_es.format.date, aTestTime5 )
     , ( "Config_es_es format idiom", "Martes (5) 05 Agosto 2014", config_es_es, dayDayIdiomMonth, aTestTime5 )
     , ( "Config_nb_no format date", "2014-08-05", config_nb_no, config_nb_no.format.date, aTestTime5 )
-    ]
-
-
-runFormatUtcTest ( name, expected, formatStr, time ) =
-    test name <|
-        \() ->
-            Expect.equal
-                expected
-                (Format.formatUtc Config_en_us.config formatStr (Core.fromTime time))
-
-
-formatUtcTestCases =
-    [ ( "get back expected date in utc +00:00"
-      , "2014-08-12T08:53:51.116+00:00"
-      , "%Y-%m-%dT%H:%M:%S.%L%:z"
-      , aTestTime
-      )
-    ]
-
-
-runformatOffsetTest ( name, expected, formatStr, time, offset ) =
-    test name <|
-        \() ->
-            Expect.equal
-                expected
-                (Format.formatOffset Config_en_us.config offset formatStr (Core.fromTime time))
-
-
-formatOffsetTestCases =
-    [ ( "get back expected date in utc -04:00"
-      , "2014-08-12T04:53:51.116-04:00"
-      , "%Y-%m-%dT%H:%M:%S.%L%:z"
-      , aTestTime
-      , 240
-      )
-    , ( "get back expected date in utc -12:00"
-      , "2014-08-12T20:53:51.116+12:00"
-      , "%Y-%m-%dT%H:%M:%S.%L%:z"
-      , aTestTime
-      , -720
-      )
-    , ( "12 hour time %I"
-      , "Wednesday, 13 August 2014 12:53:51 AM"
-      , "%A, %e %B %Y %I:%M:%S %p"
-      , aTestTime2
-      , -600
-      )
-    , ( "12 hour time %l"
-      , "Wednesday, 13 August 2014 12:53:51 AM"
-      , "%A, %e %B %Y %l:%M:%S %p"
-      , aTestTime2
-      , -600
-      )
     ]

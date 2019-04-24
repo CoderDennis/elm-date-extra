@@ -1,6 +1,6 @@
 module Date.Extra.Core exposing (monthToInt)
 
-import Time exposing (Month)
+import Time exposing (Month(..))
 
 
 monthToInt : Month -> Int
