@@ -8,12 +8,12 @@ See bottom of this document for important history notes.
 
 ### Code format
 
-This project uses elm-format for formatting.
+This project uses elm-format for formatting its Elm code.
 
 ### Includes
 * flexible formatting of dates into strings
- * simple i18n support for long and short Day and Month names.
- * see [DocFormat.md](https://github.com/CoderDennis/elm-time-extra/blob/master/DocFormat.md)
+  * simple i18n support for long and short Day and Month names.
+  * see [DocFormat.md](https://github.com/CoderDennis/elm-time-extra/blob/master/DocFormat.md)
 
 
 Example of formatting Dates (needs updating)
@@ -54,11 +54,11 @@ It is hoped that with feedback from users and reviewers with deep Type-zen it wi
 * More Examples for example folder
 * Improved documentation.
 * Bugs.
- * Please try to include sufficient detail to reproduce.
- * Better yet create a test and submit a pull request, even if you cant figure out how to fix it.
+  * Please try to include sufficient detail to reproduce.
+  * Better yet create a test and submit a pull request, even if you cant figure out how to fix it.
 * More tests.
- * That demonstrate issues.
- * That fill a short fall in existing tests..
+  * That demonstrate issues.
+  * That fill a short fall in existing tests..
 
 
 
@@ -85,9 +85,9 @@ To run Tests
 Only major (and recent) changes are listed here.
 
 * 2019/04/24 1.0.0
- * forked from https://github.com/rluiten/elm-date-extra which was only compatible with Elm 0.18
- * Removed everything except i18n Configs and Format
- * There are better ways to work with iso date strings and performing Time math in Elm 0.19
+  * forked from https://github.com/rluiten/elm-date-extra which was only compatible with Elm 0.18
+  * Removed everything except i18n Configs and Format
+  * There are better ways to work with iso date strings and performing Time math in Elm 0.19
 
 
 Copyright (c) 2016-2018 Robin Luiten

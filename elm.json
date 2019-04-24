@@ -1,7 +1,7 @@
 {
     "type": "package",
     "name": "CoderDennis/elm-time-format",
-    "summary": "Format and Internationalization for Time.Posix",
+    "summary": "Formatting and Internationalization of Time.Posix",
     "license": "MIT",
     "version": "1.0.0",
     "exposed-modules": [
