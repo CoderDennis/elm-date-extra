@@ -1,23 +1,14 @@
 {
-    "version": "9.4.0",
-    "summary": "Date Extra library add/subtract/diff/format etc dates.",
-    "repository": "https://github.com/rluiten/elm-date-extra.git",
-    "license": "BSD3",
-    "source-directories": [
-        "./src"
-    ],
+    "type": "package",
+    "name": "CoderDennis/elm-time-extra",
+    "summary": "Time Extra library i18n format for Time.Posix",
+    "license": "BSD-3-Clause",
+    "version": "1.0.0",
     "exposed-modules": [
         "Date.Extra.Config",
-        "Date.Extra.Compare",
         "Date.Extra.Core",
-        "Date.Extra.Create",
-        "Date.Extra.Duration",
         "Date.Extra.Format",
-        "Date.Extra.Period",
-        "Date.Extra.TimeUnit",
-        "Date.Extra.TypeAlias",
         "Date.Extra.TwelveHourClock",
-        "Date.Extra.Utils",
         "Date.Extra.I18n.I_default",
         "Date.Extra.I18n.I_en_us",
         "Date.Extra.I18n.I_fi_fi",
@@ -32,7 +23,6 @@
         "Date.Extra.I18n.I_ru_ru",
         "Date.Extra.I18n.I_tr_tr",
         "Date.Extra.I18n.I_lt_lt",
-        "Date.Extra.I18n.I_el_gr",
         "Date.Extra.I18n.I_sv_se",
         "Date.Extra.Config.Configs",
         "Date.Extra.Config.Config_en_au",
@@ -53,11 +43,13 @@
         "Date.Extra.Config.Config_lt_lt",
         "Date.Extra.Config.Config_el_gr",
         "Date.Extra.Config.Config_sv_se",
-        "Date.Extra.Config.Config_nb_no",
-        "Date.Extra.Field"
+        "Date.Extra.Config.Config_nb_no"
     ],
+    "elm-version": "0.19.0 <= v < 0.20.0",
     "dependencies": {
-        "elm-lang/core": "5.0.0 <= v < 6.0.0"
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/regex": "1.0.0 <= v < 2.0.0",
+        "elm/time": "1.0.0 <= v < 2.0.0"
     },
-    "elm-version": "0.18.0 <= v < 0.19.0"
+    "test-dependencies": {}
 }

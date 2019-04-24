@@ -1,4 +1,10 @@
-module Date.Extra.I18n.I_pl_pl exposing (..)
+module Date.Extra.I18n.I_pl_pl exposing
+    ( dayShort
+    , dayName
+    , monthShort
+    , monthName
+    , dayOfMonthWithSuffix
+    )
 
 {-| Polish values for day and month names.
 
@@ -12,12 +18,13 @@ Copyright (c) 2016-2017 Bartosz Sokół
 
 -}
 
-import Date exposing (Day(..), Month(..))
+import String exposing (fromInt)
+import Time exposing (Month(..), Weekday(..))
 
 
 {-| Day short name.
 -}
-dayShort : Day -> String
+dayShort : Weekday -> String
 dayShort day =
     case day of
         Mon ->
@@ -44,7 +51,7 @@ dayShort day =
 
 {-| Day full name.
 -}
-dayName : Day -> String
+dayName : Weekday -> String
 dayName day =
     case day of
         Mon ->
@@ -156,7 +163,5 @@ monthName month =
 {-| This may not do anything in French
 -}
 dayOfMonthWithSuffix : Bool -> Int -> String
-dayOfMonthWithSuffix pad day =
-    case day of
-        _ ->
-            (toString day)
+dayOfMonthWithSuffix _ =
+    fromInt

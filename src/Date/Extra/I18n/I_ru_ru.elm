@@ -1,4 +1,11 @@
-module Date.Extra.I18n.I_ru_ru exposing (..)
+module Date.Extra.I18n.I_ru_ru exposing
+    ( dayShort
+    , dayName
+    , monthShort
+    , monthName
+    , dayOfMonthWithSuffix
+    , twelveHourPeriod
+    )
 
 {-| Russian values for day and month names.
 
@@ -11,13 +18,14 @@ module Date.Extra.I18n.I_ru_ru exposing (..)
 
 -}
 
-import Date exposing (Day(..), Month(..))
 import Date.Extra.TwelveHourClock exposing (TwelveHourPeriod(..))
+import String exposing (fromInt)
+import Time exposing (Month(..), Weekday(..))
 
 
 {-| Day short name.
 -}
-dayShort : Day -> String
+dayShort : Weekday -> String
 dayShort day =
     case day of
         Mon ->
@@ -44,7 +52,7 @@ dayShort day =
 
 {-| Day full name.
 -}
-dayName : Day -> String
+dayName : Weekday -> String
 dayName day =
     case day of
         Mon ->
@@ -171,7 +179,5 @@ twelveHourPeriod period =
 {-| Just convert to string
 -}
 dayOfMonthWithSuffix : Bool -> Int -> String
-dayOfMonthWithSuffix pad day =
-    case day of
-        _ ->
-            toString day
+dayOfMonthWithSuffix _ =
+    fromInt

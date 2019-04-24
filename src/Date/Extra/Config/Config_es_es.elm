@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_es_es exposing (..)
+module Date.Extra.Config.Config_es_es exposing (config)
 
 {-| This is the Spanish config for formatting dates.
 
@@ -8,13 +8,13 @@ Copyright (c) 2018 Ángel Herranz
 
 -}
 
-import Date
 import Date.Extra.Config as Config
 import Date.Extra.I18n.I_default as Default
 import Date.Extra.I18n.I_es_es as Spanish
+import Time
 
 
-{-| Config for es_es.
+{-| Config for es\_es.
 -}
 config : Config.Config
 config =
@@ -32,6 +32,6 @@ config =
         , time = "%-H:%M" -- h:mm
         , longTime = "%-H:%M:%S" -- h:mm:ss
         , dateTime = "%-d.%m.%Y %-H:%M" -- date + time
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

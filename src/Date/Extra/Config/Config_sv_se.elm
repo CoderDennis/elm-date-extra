@@ -1,13 +1,15 @@
 module Date.Extra.Config.Config_sv_se exposing (config)
 
 {-| This is the Swedish config for formatting dates.
+
 @docs config
+
 -}
 
-import Date
 import Date.Extra.Config as Config
 import Date.Extra.I18n.I_default as Default
 import Date.Extra.I18n.I_sv_se as Swedish
+import Time
 
 
 {-| Config for sv-se.
@@ -28,6 +30,6 @@ config =
         , time = "%H:%M" -- HH:mm
         , longTime = "%H:%M:%S" -- HH:mm:ss
         , dateTime = "%Y-%m-%d %H:%M" -- YYYY-MM-DD HH:mm
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

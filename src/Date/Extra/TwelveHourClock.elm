@@ -1,15 +1,16 @@
-module Date.Extra.TwelveHourClock
-    exposing
-        ( TwelveHourPeriod(..)
-        , twelveHourPeriod
-        )
+module Date.Extra.TwelveHourClock exposing
+    ( TwelveHourPeriod(..)
+    , twelveHourPeriod
+    )
 
 {-| Definition of 12-Hour clock and AM/PMv alue for dates.
+
 @docs TwelveHourPeriod
 @docs twelveHourPeriod
+
 -}
 
-import Date
+import Time exposing (Posix, Zone, toHour)
 
 
 {-| 12-Hour clock abbreviations (AM/PM)
@@ -21,9 +22,10 @@ type TwelveHourPeriod
 
 {-| Common Date to AM/PM value.
 -}
-twelveHourPeriod : Date.Date -> TwelveHourPeriod
-twelveHourPeriod d =
-    if Date.hour d < 12 then
+twelveHourPeriod : Zone -> Posix -> TwelveHourPeriod
+twelveHourPeriod z d =
+    if toHour z d < 12 then
         AM
+
     else
         PM

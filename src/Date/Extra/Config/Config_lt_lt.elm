@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_lt_lt exposing (..)
+module Date.Extra.Config.Config_lt_lt exposing (config)
 
 {-| This is the default Lithuanian config for formatting dates.
 
@@ -8,10 +8,10 @@ Copyright (c) 2016-2018 Robin Luiten
 
 -}
 
-import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_lt_lt as Lithuanian
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_lt_lt as Lithuanian
+import Time
 
 
 {-| Config for en-us.
@@ -32,6 +32,6 @@ config =
         , time = "%H:%M"
         , longTime = "%H:%M:%S"
         , dateTime = "%a, %-d. %b %Y. %-H:%M"
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

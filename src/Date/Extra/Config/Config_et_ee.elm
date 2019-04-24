@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_et_ee exposing (..)
+module Date.Extra.Config.Config_et_ee exposing (config)
 
 {-| This is the default Estonian config for formatting dates.
 
@@ -8,10 +8,10 @@ Copyright (c) 2016-2018 Robin Luiten
 
 -}
 
-import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_et_ee as Estonian
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_et_ee as Estonian
+import Time
 
 
 {-| Config for en-us.
@@ -32,6 +32,6 @@ config =
         , time = "%-H:%M" -- h:mm
         , longTime = "%-H:%M:%S" -- h:mm:ss
         , dateTime = "%a, %-d. %b %Y. %-H:%M:%S" -- date + time
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

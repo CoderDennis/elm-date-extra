@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_ru_ru exposing (..)
+module Date.Extra.Config.Config_ru_ru exposing (config)
 
 {-| This is the default russian config for formatting dates.
 
@@ -8,9 +8,9 @@ Copyright (c) 2016-2017 Slava Turchaninov
 
 -}
 
-import Date
 import Date.Extra.Config as Config
 import Date.Extra.I18n.I_ru_ru as Russian
+import Time
 
 
 {-| Config for ru-ru.
@@ -31,6 +31,6 @@ config =
         , time = "%H:%M" -- H:mm tt
         , longTime = "%H:%M:%S" -- H:mm:ss
         , dateTime = "%d/%m/%Y %H:%M" -- date + time
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

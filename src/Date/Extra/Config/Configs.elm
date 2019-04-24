@@ -1,8 +1,7 @@
-module Date.Extra.Config.Configs
-    exposing
-        ( configs
-        , getConfig
-        )
+module Date.Extra.Config.Configs exposing
+    ( getConfig
+    , configs
+    )
 
 {-| Get a Date Extra Config based up on a locale code.
 
@@ -15,7 +14,6 @@ Copyright (c) 2016-2018 Robin Luiten
 
 import Date.Extra.Config as Config exposing (Config)
 import Date.Extra.Config.Config_de_de as Config_de_de
-import Date.Extra.Config.Config_el_gr as Config_el_gr
 import Date.Extra.Config.Config_en_au as Config_en_au
 import Date.Extra.Config.Config_en_gb as Config_en_gb
 import Date.Extra.Config.Config_en_us as Config_en_us
@@ -25,6 +23,7 @@ import Date.Extra.Config.Config_fi_fi as Config_fi_fi
 import Date.Extra.Config.Config_fr_fr as Config_fr_fr
 import Date.Extra.Config.Config_ja_jp as Config_ja_jp
 import Date.Extra.Config.Config_lt_lt as Config_lt_lt
+import Date.Extra.Config.Config_nb_no as Config_nb_no
 import Date.Extra.Config.Config_nl_nl as Config_nl_nl
 import Date.Extra.Config.Config_pl_pl as Config_pl_pl
 import Date.Extra.Config.Config_pt_br as Config_pt_br
@@ -32,10 +31,8 @@ import Date.Extra.Config.Config_ro_ro as Config_ro_ro
 import Date.Extra.Config.Config_ru_ru as Config_ru_ru
 import Date.Extra.Config.Config_sv_se as Config_sv_se
 import Date.Extra.Config.Config_tr_tr as Config_tr_tr
-import Date.Extra.Config.Config_nb_no as Config_nb_no
 import Dict exposing (Dict)
-import Regex exposing (HowMany(All), regex, replace)
-import String
+import String exposing (replace)
 
 
 {-| Built in configurations.
@@ -58,7 +55,6 @@ configs =
         , ( "de_de", Config_de_de.config )
         , ( "tr_tr", Config_tr_tr.config )
         , ( "lt_lt", Config_lt_lt.config )
-        , ( "el_gr", Config_el_gr.config )
         , ( "sv_se", Config_sv_se.config )
         , ( "es_es", Config_es_es.config )
         , ( "nb_no", Config_nb_no.config )
@@ -67,10 +63,10 @@ configs =
 
 {-| Get a Date Extra Config for a locale id.
 
-Lower case matches strings and accepts "-" or "_" to seperate
+Lower case matches strings and accepts "-" or "\_" to seperate
 the characters in code.
 
-Returns "en_us" config if it can't find a match in configs.
+Returns "en\_us" config if it can't find a match in configs.
 
 -}
 getConfig : String -> Config
@@ -80,7 +76,7 @@ getConfig id =
             String.toLower id
 
         fixedId =
-            replace All (regex "-") (\_ -> "_") lowerId
+            replace "-" "_" lowerId
     in
-        Maybe.withDefault Config_en_us.config
-            (Dict.get fixedId configs)
+    Maybe.withDefault Config_en_us.config
+        (Dict.get fixedId configs)

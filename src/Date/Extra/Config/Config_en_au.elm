@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_en_au exposing (..)
+module Date.Extra.Config.Config_en_au exposing (config)
 
 {-| This is the default english config for formatting dates.
 
@@ -8,10 +8,10 @@ Copyright (c) 2016-2018 Robin Luiten
 
 -}
 
-import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_en_us as English
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_en_us as English
+import Time
 
 
 {-| Config for en-au.
@@ -32,6 +32,6 @@ config =
         , time = "%-I:%M %p" -- h:mm tt
         , longTime = "%-I:%M:%S %p" -- h:mm:ss tt
         , dateTime = "%-d/%m/%Y %-I:%M %p" -- date + time
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

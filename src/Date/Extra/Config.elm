@@ -1,9 +1,9 @@
-module Date.Extra.Config exposing (..)
+module Date.Extra.Config exposing (Config)
 
 {-| Date configuration.
 
 For i18n for day and month names.
-Parameter to Format.format* functions.
+Parameter to Format.format\* functions.
 
 There is scope to put in some default format strings here.
 
@@ -13,7 +13,7 @@ Copyright (c) 2016-2018 Robin Luiten
 
 -}
 
-import Date exposing (Day, Month)
+import Time exposing (Weekday, Month)
 import Date.Extra.TwelveHourClock exposing (TwelveHourPeriod)
 
 
@@ -21,8 +21,8 @@ import Date.Extra.TwelveHourClock exposing (TwelveHourPeriod)
 -}
 type alias Config =
     { i18n :
-        { dayShort : Day -> String
-        , dayName : Day -> String
+        { dayShort : Weekday -> String
+        , dayName : Weekday -> String
         , monthShort : Month -> String
         , monthName : Month -> String
         , dayOfMonthWithSuffix : Bool -> Int -> String
@@ -34,6 +34,6 @@ type alias Config =
         , time : String
         , longTime : String
         , dateTime : String
-        , firstDayOfWeek : Date.Day
+        , firstDayOfWeek : Weekday
         }
     }

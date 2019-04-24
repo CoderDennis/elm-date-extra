@@ -1,4 +1,10 @@
-module Date.Extra.I18n.I_fr_fr exposing (..)
+module Date.Extra.I18n.I_fr_fr exposing
+    ( dayShort
+    , dayName
+    , monthShort
+    , monthName
+    , dayOfMonthWithSuffix
+    )
 
 {-| French values for day and month names.
 
@@ -12,13 +18,13 @@ Copyright (c) 2016 Bruno Girin
 
 -}
 
-import Date exposing (Day(..), Month(..))
-import String exposing (padLeft)
+import Time exposing (Weekday(..), Month(..))
+import String exposing (fromInt, padLeft)
 
 
 {-| Day short name.
 -}
-dayShort : Day -> String
+dayShort : Weekday -> String
 dayShort day =
     case day of
         Mon ->
@@ -45,7 +51,7 @@ dayShort day =
 
 {-| Day full name.
 -}
-dayName : Day -> String
+dayName : Weekday -> String
 dayName day =
     case day of
         Mon ->
@@ -175,9 +181,10 @@ dayOfMonthWithSuffix pad day =
                     "1er"
 
                 _ ->
-                    (toString day)
+                    fromInt day
     in
-        if pad then
-            padLeft 3 ' ' value
-        else
-            value
+    if pad then
+        padLeft 3 ' ' value
+
+    else
+        value

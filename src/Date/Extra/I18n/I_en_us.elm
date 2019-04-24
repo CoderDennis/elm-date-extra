@@ -1,4 +1,10 @@
-module Date.Extra.I18n.I_en_us exposing (..)
+module Date.Extra.I18n.I_en_us exposing
+    ( dayShort
+    , dayName
+    , monthShort
+    , monthName
+    , dayOfMonthWithSuffix
+    )
 
 {-| English values for day and month names.
 
@@ -12,13 +18,13 @@ Copyright (c) 2016-2018 Robin Luiten
 
 -}
 
-import Date exposing (Day(..), Month(..))
-import String exposing (padLeft)
+import Time exposing (Weekday(..), Month(..))
+import String exposing (fromInt, padLeft)
 
 
 {-| Day short name.
 -}
-dayShort : Day -> String
+dayShort : Weekday -> String
 dayShort day =
     case day of
         Mon ->
@@ -45,7 +51,7 @@ dayShort day =
 
 {-| Day full name.
 -}
-dayName : Day -> String
+dayName : Weekday -> String
 dayName day =
     case day of
         Mon ->
@@ -186,9 +192,10 @@ dayOfMonthWithSuffix pad day =
                     "31st"
 
                 _ ->
-                    (toString day) ++ "th"
+                    fromInt day ++ "th"
     in
-        if pad then
-            padLeft 4 ' ' value
-        else
-            value
+    if pad then
+        padLeft 4 ' ' value
+
+    else
+        value

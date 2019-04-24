@@ -1,10 +1,8 @@
-module Date.Extra.FormatTests exposing (..)
+module Date.Extra.FormatTests exposing (aTestTime, aTestTime10, aTestTime2, aTestTime3, aTestTime4, aTestTime5, aTestTime6, aTestTime7, aTestTime8, aTestTime9, config_de_de, config_en_au, config_en_gb, config_en_us, config_es_es, config_et_ee, config_fi_fi, config_fr_fr, config_ja_jp, config_lt_lt, config_nb_no, config_nl_nl, config_pl_pl, config_pt_br, config_ro_ro, config_ru_ru, config_sv_se, config_tr_tr, dayDayIdiomMonth, formatConfigTestCases, formatOffsetTestCases, formatTestCases, formatUtcTestCases, runConfigLanguageTest, runFormatTest, runFormatUtcTest, runformatOffsetTest, tests)
 
 {- Test date format. -}
 
-import Date exposing (Date)
 import Date.Extra.Config.Config_de_de as Config_de_de
-import Date.Extra.Config.Config_el_gr as Config_el_gr
 import Date.Extra.Config.Config_en_au as Config_en_au
 import Date.Extra.Config.Config_en_gb as Config_en_gb
 import Date.Extra.Config.Config_en_us as Config_en_us
@@ -14,6 +12,7 @@ import Date.Extra.Config.Config_fi_fi as Config_fi_fi
 import Date.Extra.Config.Config_fr_fr as Config_fr_fr
 import Date.Extra.Config.Config_ja_jp as Config_ja_jp
 import Date.Extra.Config.Config_lt_lt as Config_lt_lt
+import Date.Extra.Config.Config_nb_no as Config_nb_no
 import Date.Extra.Config.Config_nl_nl as Config_nl_nl
 import Date.Extra.Config.Config_pl_pl as Config_pl_pl
 import Date.Extra.Config.Config_pt_br as Config_pt_br
@@ -21,10 +20,7 @@ import Date.Extra.Config.Config_ro_ro as Config_ro_ro
 import Date.Extra.Config.Config_ru_ru as Config_ru_ru
 import Date.Extra.Config.Config_sv_se as Config_sv_se
 import Date.Extra.Config.Config_tr_tr as Config_tr_tr
-import Date.Extra.Config.Config_nb_no as Config_nb_no
-import Date.Extra.Core as Core
 import Date.Extra.Format as Format
-import Date.Extra.Period as DPeriod exposing (Period(Hour))
 import Expect
 import Test exposing (..)
 import Time exposing (Time)
@@ -92,10 +88,6 @@ config_tr_tr =
 
 config_lt_lt =
     Config_lt_lt.config
-
-
-config_el_gr =
-    Config_el_gr.config
 
 
 config_es_es =
@@ -213,11 +205,11 @@ runFormatTest ( name, expected, formatStr, time ) =
         --   , "format", (Format.formatOffset Config_en_us.config -600 formatStr asDate)
         --   )
     in
-        test name <|
-            \() ->
-                Expect.equal
-                    expected
-                    (Format.formatOffset Config_en_us.config -600 formatStr asDate)
+    test name <|
+        \() ->
+            Expect.equal
+                expected
+                (Format.formatOffset Config_en_us.config -600 formatStr asDate)
 
 
 formatTestCases =
@@ -263,11 +255,11 @@ runConfigLanguageTest ( name, expected, config, formatStr, time ) =
         asDate =
             Core.fromTime time
     in
-        test name <|
-            \() ->
-                Expect.equal
-                    expected
-                    (Format.formatOffset config -600 formatStr asDate)
+    test name <|
+        \() ->
+            Expect.equal
+                expected
+                (Format.formatOffset config -600 formatStr asDate)
 
 
 {-| These tests are testing a few language field values and the day idiom function.

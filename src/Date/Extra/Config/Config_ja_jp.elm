@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_ja_jp exposing (..)
+module Date.Extra.Config.Config_ja_jp exposing (config)
 
 {-| This is the Japanese config for formatting dates.
 
@@ -8,13 +8,13 @@ Copyright (c) 2017 Yosuke Torii
 
 -}
 
-import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_ja_jp as Japanese
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_ja_jp as Japanese
+import Time
 
 
-{-| Config for ja_jp.
+{-| Config for ja\_jp.
 -}
 config : Config.Config
 config =
@@ -32,6 +32,6 @@ config =
         , time = "%-H:%M"
         , longTime = "%-H時%M分%S秒"
         , dateTime = "%Y/%-m/%-d %-H:%M"
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

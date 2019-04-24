@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_nl_nl exposing (..)
+module Date.Extra.Config.Config_nl_nl exposing (config)
 
 {-| This is the Dutch config for formatting dates.
 
@@ -10,8 +10,8 @@ Copyright (c) 2016-2017 Mats Stijlaart
 
 import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_nl_nl as Dutch
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_nl_nl as Dutch
 
 
 {-| Config for nl-nl.

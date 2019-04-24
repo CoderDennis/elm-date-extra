@@ -1,4 +1,10 @@
-module Date.Extra.I18n.I_nl_nl exposing (..)
+module Date.Extra.I18n.I_nl_nl exposing
+    ( dayShort
+    , dayName
+    , monthShort
+    , monthName
+    , dayOfMonthWithSuffix
+    )
 
 {-| Dutch values for day and month names.
 
@@ -10,12 +16,13 @@ module Date.Extra.I18n.I_nl_nl exposing (..)
 
 -}
 
-import Date exposing (Day(..), Month(..))
+import String exposing (fromInt)
+import Time exposing (Weekday(..), Month(..))
 
 
 {-| Day short name.
 -}
-dayShort : Day -> String
+dayShort : Weekday -> String
 dayShort day =
     case day of
         Mon ->
@@ -42,7 +49,7 @@ dayShort day =
 
 {-| Day full name.
 -}
-dayName : Day -> String
+dayName : Weekday -> String
 dayName day =
     case day of
         Mon ->
@@ -155,4 +162,4 @@ monthName month =
 -}
 dayOfMonthWithSuffix : Bool -> Int -> String
 dayOfMonthWithSuffix _ =
-    toString
+    fromInt

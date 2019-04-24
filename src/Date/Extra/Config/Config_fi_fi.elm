@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_fi_fi exposing (..)
+module Date.Extra.Config.Config_fi_fi exposing (config)
 
 {-| This is the Finnish config for formatting dates.
 
@@ -8,10 +8,10 @@ Copyright (c) 2016-2017 Ossi Hanhinen
 
 -}
 
-import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_fi_fi as Finnish
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_fi_fi as Finnish
+import Time
 
 
 {-| Config for fi-fi.
@@ -32,6 +32,6 @@ config =
         , time = "%-H:%M" -- h:mm
         , longTime = "%-H:%M:%S" -- h:mm:ss
         , dateTime = "%-d.%-m.%Y %-H:%M" -- date + time
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

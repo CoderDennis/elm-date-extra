@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_ro_ro exposing (..)
+module Date.Extra.Config.Config_ro_ro exposing (config)
 
 {-| This is the Romanian config for formatting dates.
 
@@ -8,13 +8,13 @@ Copyright (c) 2016-2017 Cezar Halmagean
 
 -}
 
-import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_ro_ro as Romanian
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_ro_ro as Romanian
+import Time
 
 
-{-| Config for ro_ro.
+{-| Config for ro\_ro.
 -}
 config : Config.Config
 config =
@@ -32,6 +32,6 @@ config =
         , time = "%-H:%M" -- h:mm
         , longTime = "%-H:%M:%S" -- h:mm:ss
         , dateTime = "%-d.%m.%Y %-H:%M" -- date + time
-        , firstDayOfWeek = Date.Mon
+        , firstDayOfWeek = Time.Mon
         }
     }

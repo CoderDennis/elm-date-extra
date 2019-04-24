@@ -1,4 +1,10 @@
-module Date.Extra.I18n.I_lt_lt exposing (..)
+module Date.Extra.I18n.I_lt_lt exposing
+    ( dayShort
+    , dayName
+    , monthShort
+    , monthName
+    , dayOfMonthWithSuffix
+    )
 
 {-| Lithuanian values for day and month names.
 
@@ -12,13 +18,13 @@ Copyright (c) 2016-2018 Robin Luiten
 
 -}
 
-import Date exposing (Day(..), Month(..))
-import String exposing (padLeft)
+import String exposing (fromInt)
+import Time exposing (Weekday(..), Month(..))
 
 
 {-| Day short name.
 -}
-dayShort : Day -> String
+dayShort : Weekday -> String
 dayShort day =
     case day of
         Mon ->
@@ -45,7 +51,7 @@ dayShort day =
 
 {-| Day full name.
 -}
-dayName : Day -> String
+dayName : Weekday -> String
 dayName day =
     case day of
         Mon ->
@@ -157,5 +163,5 @@ monthName month =
 {-| Nothing to do here for Lithuanian.
 -}
 dayOfMonthWithSuffix : Bool -> Int -> String
-dayOfMonthWithSuffix pad day =
-    (toString day) ++ "."
+dayOfMonthWithSuffix _ day =
+    fromInt day ++ "."

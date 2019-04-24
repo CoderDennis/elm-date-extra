@@ -1,4 +1,10 @@
-module Date.Extra.I18n.I_ro_ro exposing (..)
+module Date.Extra.I18n.I_ro_ro exposing
+    ( dayShort
+    , dayName
+    , monthShort
+    , monthName
+    , dayOfMonthWithSuffix
+    )
 
 {-| Romanian values for day and month names.
 
@@ -12,12 +18,13 @@ Copyright (c) 2016-2017 Cezar Halmagean
 
 -}
 
-import Date exposing (Day(..), Month(..))
+import String exposing (fromInt)
+import Time exposing (Month(..), Weekday(..))
 
 
 {-| Day short name.
 -}
-dayShort : Day -> String
+dayShort : Weekday -> String
 dayShort day =
     case day of
         Mon ->
@@ -44,7 +51,7 @@ dayShort day =
 
 {-| Day full name.
 -}
-dayName : Day -> String
+dayName : Weekday -> String
 dayName day =
     case day of
         Mon ->
@@ -156,7 +163,5 @@ monthName month =
 {-| No suffixes for Romanian
 -}
 dayOfMonthWithSuffix : Bool -> Int -> String
-dayOfMonthWithSuffix pad day =
-    case day of
-        _ ->
-            toString day
+dayOfMonthWithSuffix _ =
+    fromInt

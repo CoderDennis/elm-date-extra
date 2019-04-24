@@ -1,4 +1,4 @@
-module Date.Extra.Config.Config_pt_br exposing (..)
+module Date.Extra.Config.Config_pt_br exposing (config)
 
 {-| This is the Brazilian Portuguese config for formatting dates.
 
@@ -6,10 +6,10 @@ module Date.Extra.Config.Config_pt_br exposing (..)
 
 -}
 
-import Date
 import Date.Extra.Config as Config
-import Date.Extra.I18n.I_pt_br as Portuguese
 import Date.Extra.I18n.I_default as Default
+import Date.Extra.I18n.I_pt_br as Portuguese
+import Time
 
 
 {-| Config for pt-br.
@@ -30,6 +30,6 @@ config =
         , time = "%H:%M"
         , longTime = "%H:%M:%S"
         , dateTime = "%d/%m/%Y %H:%M"
-        , firstDayOfWeek = Date.Sun
+        , firstDayOfWeek = Time.Sun
         }
     }

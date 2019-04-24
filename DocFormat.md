@@ -3,13 +3,11 @@
 
 The module `Date.Extra.Format` exports
 
-* `format : Config -> String -> Date -> String`.
-* `formatUtc : Config -> String -> Date -> String`.
-* `formatOffset : Config -> Int -> String -> Date -> String`.
+* `format : Config -> String -> Zone -> Posix -> String`.
 
 The `Config` refers to the configuration of i18n and default strings for some basic localisation support.
 
-The `Date` refers to Elm's standard [Date library](http://package.elm-lang.org/packages/elm-lang/core/latest/Date).
+The `Zone` and `Posix` refer to Elm's standard [Time library](https://package.elm-lang.org/packages/elm/time/latest/Time).
 
 The input `String` may contain any of the following substrings, which will be expanded to parts of the date resultant string format of date
 
@@ -44,13 +42,7 @@ The input `String` may contain any of the following substrings, which will be ex
 * `%M` - Minute of the hour, zero-padded
 * `%S` - Second of the minute, zero-padded
 * `%L` - Milliseconds of a second, length 3 zero-padded
-* `%z` - time zone offset format "(+/-)HHMM"
-* `%:z` - time zone offset format "(+/-)HH:MM"
 * `%%` - produces a `%`
-* '%G' - week based year of isoWeek (as output from Utils.isoWeek) 4 digits
-* '%V' - isoWeek (as output from Utils.isoWeek) zero-padded
-* '%-V' - isoWeek (as output from Utils.isoWeek) no padding
-* '%u' - iso day of week (1..7) for (Mon..Sun)
 
 
 These tokens are a subset of those from [Ruby](http://apidock.com/ruby/DateTime/strftime) with some extensions.
