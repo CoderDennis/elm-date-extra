@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "exposed-modules": [
         "Time.Format.Config",
-        "Time.Format.Format",
+        "Time.Format",
         "Time.Format.TwelveHourClock",
         "Time.Format.I18n.I_default",
         "Time.Format.I18n.I_en_us",
