@@ -13,28 +13,12 @@ This project uses elm-format for formatting its Elm code.
 ### Includes
 * flexible formatting of dates into strings
   * simple i18n support for long and short Day and Month names.
-  * see [DocFormat.md](https://github.com/CoderDennis/elm-time-extra/blob/master/DocFormat.md)
+  * see [DocFormat.md](https://github.com/CoderDennis/elm-time-format/blob/master/DocFormat.md)
 
 
-Example of formatting Dates (needs updating)
-```elm
-import Date.Extra.Config.Config_en_au exposing (config)
-import Date.Extra.Format as Format exposing (format, formatUtc, isoMsecOffsetFormat)
+### Example
 
-
-displayString1 =
-    Result.withDefault "Failed to get a date." <|
-        Result.map
-            (format config config.format.dateTime)
-            (Date.fromString "2015-06-01 12:45:14.211Z")
-
-
-displayString2 =
-    Result.withDefault "Failed to get a date." <|
-        Result.map
-            (formatUtc config isoMsecOffsetFormat)
-            (Date.fromString "2015-06-01 12:45:14.211Z")
-```
+see [ExampleConfigFormat.elm](https://github.com/CoderDennis/elm-time-format/blob/master/examples/ExampleConfigFormat.elm)
 
 ### Where did this come from.
 

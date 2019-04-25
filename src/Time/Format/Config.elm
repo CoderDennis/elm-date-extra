@@ -3,7 +3,7 @@ module Time.Format.Config exposing (Config)
 {-| Date configuration.
 
 For i18n for day and month names.
-Parameter to Format.format\* functions.
+Parameter to Format.format function.
 
 There is scope to put in some default format strings here.
 

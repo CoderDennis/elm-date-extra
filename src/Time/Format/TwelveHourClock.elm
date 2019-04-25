@@ -3,7 +3,7 @@ module Time.Format.TwelveHourClock exposing
     , twelveHourPeriod
     )
 
-{-| Definition of 12-Hour clock and AM/PMv alue for dates.
+{-| Definition of 12-Hour clock and AM/PM value for dates.
 
 @docs TwelveHourPeriod
 @docs twelveHourPeriod
@@ -20,7 +20,7 @@ type TwelveHourPeriod
     | PM
 
 
-{-| Common Date to AM/PM value.
+{-| Common Zone + Posix to AM/PM value.
 -}
 twelveHourPeriod : Zone -> Posix -> TwelveHourPeriod
 twelveHourPeriod z d =

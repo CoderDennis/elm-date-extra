@@ -53,7 +53,7 @@ formatRegex =
         Regex.fromString "%(y|Y|m|_m|-m|B|^B|b|^b|d|-d|-@d|e|@e|A|^A|a|^a|H|-H|k|I|-I|l|p|P|M|S|%|L)"
 
 
-{-| Use a format string to format a date.
+{-| Use a format string to format a Posix time for a specific Zone.
 -}
 format : Config.Config -> String -> Zone -> Posix -> String
 format config formatStr zone time =
